@@ -121,3 +121,30 @@
 .name-card{
     margin-left: 35px;
 }
+/***************************************/
+.poster{
+    background: #000000;
+    border: 2px solid #2244DD;
+    height: 400px;
+    width: 650px;
+}
+
+.impact{
+    border: 2px solid #2244DD;
+    display: block;
+    height: 60%;
+    width: 60%;
+    margin: 20px auto 5px;
+}
+
+.big-title{
+    color: #2244DD;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.sub-title{
+    color: azure;
+    font-size: 25px;
+    text-align: center;
+}

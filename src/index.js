@@ -87,7 +87,26 @@ let tarjeta = {
     number: '4152 3136 8787 9965',
     bank: 'Banorte'
 }
+/***************************************************************************/
 
+function Poster( {info} ){
+
+    const {img, titulo, subtitulo} = info;
+
+    return(
+      <div className="poster">
+          <img src={img} alt="Image demotivated" className="impact"/>
+          <h1 className="big-title">{titulo}</h1>
+          <p className="sub-title">{subtitulo}</p>
+      </div>
+    );
+}
+
+let infografia = {
+    img: "https://lamenteesmaravillosa.com/wp-content/uploads/2012/12/Teoria-del-iceberg.jpg",
+    titulo: "TITANIC",
+    subtitulo: "You will be down... I guarantee"
+}
 /*
 function Tweet( {tweet} ){
     return(
@@ -183,4 +202,5 @@ const MoreOptionsButton = () => (
 //ReactDOM.render( <AddressLabel person={person} />, document.querySelector('#root') );
 ReactDOM.render( <Envelope datos={correspondencia} />, document.querySelector('#root') );
 ReactDOM.render( <CreditCard cardInfo={tarjeta} />, document.querySelector('#subroot') );
+ReactDOM.render( <Poster info={infografia}/>, document.querySelector('#subsubroot') );
 //ReactDOM.render(<Tweet tweet={testTweet}/>, document.querySelector('#root'));
