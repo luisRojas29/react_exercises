@@ -148,3 +148,27 @@
     font-size: 25px;
     text-align: center;
 }
+/***************************************/
+.email{
+    border-top: 1px solid #aab8c2;
+    border-bottom: 1px solid #aab8c2;;
+}
+
+.email input, .email i{
+    display: inline-block;
+}
+
+.email-cts{
+    display: inline-block;
+}
+
+.email-head{
+    display: inline-block;
+    width: 90%;
+}
+
+.send, .sub, .dat{
+    font-weight: bolder;
+    width: 30%;
+    display: inline-block;
+}

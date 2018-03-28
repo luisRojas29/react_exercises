@@ -107,6 +107,36 @@ let infografia = {
     titulo: "TITANIC",
     subtitulo: "You will be down... I guarantee"
 }
+/***************************************************************************/
+
+function Email( {email} ){
+    const{sender, subject, date, message} = email;
+
+    return(
+        <div className="email">
+            <div className="email-cts">
+                <input type="checkbox"/> <i className="fa fa-star"></i>
+            </div>
+
+            <div className="email-head">
+                <div className="send">{sender}</div>
+                <div className="sub">{subject}</div>
+                <div className="dat">{date}</div>
+            </div>
+            <div className="email-detail">
+                {message}
+            </div>
+        </div>
+    );
+}
+
+let correo = {
+    sender: 'Cosme Fulanito',
+    subject: 'Test Reviews',
+    date: 'Feb 15',
+    message: 'We need to make corrections for the test we applied last week...'
+}
+
 /*
 function Tweet( {tweet} ){
     return(
@@ -203,4 +233,5 @@ const MoreOptionsButton = () => (
 ReactDOM.render( <Envelope datos={correspondencia} />, document.querySelector('#root') );
 ReactDOM.render( <CreditCard cardInfo={tarjeta} />, document.querySelector('#subroot') );
 ReactDOM.render( <Poster info={infografia}/>, document.querySelector('#subsubroot') );
+ReactDOM.render( <Email email={correo}/>, document.querySelector('#email') );
 //ReactDOM.render(<Tweet tweet={testTweet}/>, document.querySelector('#root'));
