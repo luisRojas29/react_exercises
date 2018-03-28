@@ -3,6 +3,24 @@ import ReactDOM from 'react-dom';
 import moment from 'moment';
 import './index.css';
 
+function AddressLabel( {person} ){
+    return(
+        <div className="address">
+            <p className="name">{person.name}</p>
+            <p className="street">{person.address.street}</p>
+            <p className="city">{person.address.city}</p>
+        </div>
+    );
+}
+
+let person = {
+    name: 'Luis Rojas',
+    address:{
+        street: '123 Fake St.',
+        city: 'Boston, MA 02118'
+    }
+}
+
 function Tweet( {tweet} ){
     return(
         <div className="tweet">
@@ -94,16 +112,6 @@ const MoreOptionsButton = () => (
     <i className="fa fa-ellipsis more-options-button"></i>
 );
 
-var testTweet = {
-    message : "Something about cats",
-    gravatar : "xyz",
-    author : {
-        handle : "catperson",
-        name : "IAMA Cat Person"
-    },
-    likes : 2,
-    retweets : 5,
-    timestamp : "2016-07-30 21:24:37"
-};
+ReactDOM.render( <AddressLabel person={person} />, document.querySelector('#root') );
 
-ReactDOM.render(<Tweet tweet={testTweet}/>, document.querySelector('#root'));
+//ReactDOM.render(<Tweet tweet={testTweet}/>, document.querySelector('#root'));
