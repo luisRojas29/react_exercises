@@ -57,3 +57,67 @@
     margin-left: 6px;
     font-weight: bold;
 }
+/****************************************/
+.envelope{
+    border: 1px solid #bb2556;
+    height: 370px;
+    width: 680px;
+    position: relative;
+}
+
+.envelope p {
+    margin: 0;
+}
+
+.c-sender{
+    display: inline-block;
+    position: absolute;
+    top: 35px;
+    left: 20px;
+}
+
+.c-receiver{
+    display: inline-block;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+}
+
+.c-stamp{
+    display: inline-block;
+    position: absolute;
+    top: 35px;
+    right: 20px;
+}
+/***************************************/
+.credit-card{
+    background: #0000DD;
+    border-radius: 15px;
+    box-shadow: 2px 4px #aab8c2;
+    color: azure;
+    font-family: "Helvetica", arial, sans-serif;
+    height: 220px;
+    width: 350px;
+}
+
+.bank-name{
+    display: block;
+    text-align: right;
+    padding: 25px 30px 0 0;
+}
+
+.number-card{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.validation-date{
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.name-card{
+    margin-left: 35px;
+}

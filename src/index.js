@@ -13,6 +13,33 @@ function AddressLabel( {person} ){
     );
 }
 
+const Stamp = ( {image} ) => {
+    const url = `${image}`;
+    return(
+        <div className="stamp">
+            <img src={url} alt="Stamp"/>
+        </div>
+    );
+}
+
+const Envelope = ( {datos} ) =>{
+    const {from, to, stamp} = datos;
+
+    return(
+      <div className="envelope">
+          <div className="c-sender">
+              <AddressLabel person={from}/>
+          </div>
+          <div className="c-receiver">
+              <AddressLabel person={to}/>
+          </div>
+          <div className="c-stamp">
+              <Stamp image={stamp} />
+          </div>
+      </div>
+    );
+};
+
 let person = {
     name: 'Luis Rojas',
     address:{
@@ -21,6 +48,47 @@ let person = {
     }
 }
 
+let receiver = {
+    name: 'Carla Diaz',
+    address:{
+        street: '123 Fake St.',
+        city: 'San Francisco, CA 95448'
+    }
+}
+
+let mystamp = 'http://via.placeholder.com/70/FF5265/FFFFFF?text=Stamp';
+
+let correspondencia = {
+    from: person,
+    to: receiver,
+    stamp: mystamp
+}
+/*********************************************************************/
+
+function CreditCard( {cardInfo}){
+    const {name, exp_date, number, bank} = cardInfo;
+
+    return(
+      <div className="credit-card">
+        <h1 className="bank-name">{bank}</h1>
+        <h2 className="number-card">{number}</h2>
+        <p className="validation-date">Valid {exp_date.month} / {exp_date.year}</p>
+        <h2 className="name-card">{name}</h2>
+      </div>
+    );
+}
+
+let tarjeta = {
+    name: 'Fulano de tal',
+    exp_date: {
+        month: '08',
+        year: '21'
+    },
+    number: '4152 3136 8787 9965',
+    bank: 'Banorte'
+}
+
+/*
 function Tweet( {tweet} ){
     return(
         <div className="tweet">
@@ -111,7 +179,8 @@ const LikeButton = ( {count} ) => (
 const MoreOptionsButton = () => (
     <i className="fa fa-ellipsis more-options-button"></i>
 );
-
-ReactDOM.render( <AddressLabel person={person} />, document.querySelector('#root') );
-
+*/
+//ReactDOM.render( <AddressLabel person={person} />, document.querySelector('#root') );
+ReactDOM.render( <Envelope datos={correspondencia} />, document.querySelector('#root') );
+ReactDOM.render( <CreditCard cardInfo={tarjeta} />, document.querySelector('#subroot') );
 //ReactDOM.render(<Tweet tweet={testTweet}/>, document.querySelector('#root'));
