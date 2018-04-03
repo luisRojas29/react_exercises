@@ -1,109 +1,128 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import moment from 'moment';
 import './index.css';
 
-function Tweet( {tweet} ){
+const ErrorBox = ({children}) => {
+
     return(
-        <div className="tweet">
-            <Avatar hash={tweet.gravatar}/>
-            <div className="content">
-                <NameWithHandle author={tweet.author}/><Time time={tweet.timestamp}/>
-                <Message text={tweet.message}/>
-                <div className="buttons">
-                    <ReplyButton />
-                    <RetweetButton count={tweet.retweets}/>
-                    <LikeButton count={tweet.likes}/>
-                    <MoreOptionsButton/>
-                </div>
-            </div>
+        <div className="alert alert-danger error-box">
+            <i className="fa fa-exclamation-triangle" />
+            {children}
         </div>
+
+    )
+}
+
+const NavItem = ( {url, children} ) => {
+    return(
+        <li>
+            <a href={url}>{children}</a>
+        </li>
     );
 }
 
-function Avatar( {hash} ){
-    var url = `https://www.gravatar.com/avatar/${hash}`;
-
+function Nav({children}){
     return(
-        <img src={url}
-             alt="avatar"
-             className="avatar"
-        />
+        <ul>
+            {children}
+        </ul>
     );
 }
 
-function Message( {text} ){
-    return(
-        <div className="message">
-            {text}
-        </div>
-    );
+function verified(properties, propertyName, component, types){
+    let error = null;
+    const prop = properties[propertyName];
+
+    React.Children.forEach(prop, function (child) {
+
+        if( types.indexOf(child.type) === -1){
+            error = new Error('`' + component + '` children should be `' + types.map(type => type.name) + '`.');
+        }
+
+    })
+
+    return error;
 }
 
-function NameWithHandle( {author} ) {
-    const {name, handle} = author;
-
-    return(
-        <span className="name-with-handle">
-            <span className="name">{name}</span>
-            <span className="handle">@{handle}</span>
-        </span>
-    );
-
-}
-
-const Time = ( {time} ) =>{
-    const timeString = moment(time).fromNow();
-    return(
-        <span className="time">{timeString}</span>
-    );
-
-};
-
-const ReplyButton = () => (
-    <i className="fa fa-reply reply-button"></i>
-);
-
-function getRetweetCount(count){
-    if(count > 0){
-        return (
-            <span className="retweet-count">
-                {count}
-            </span>
-        )
-    }else{
-        return null;
+Nav.propTypes = {
+    children: function(props, propName, componentName){
+        return verified(props, propName, componentName, [NavItem]);
     }
 }
 
-const RetweetButton = ( {count} ) => (
-    <span className="retweet-button">
-        <i className="fa fa-retweet" />{getRetweetCount(count)}
-    </span>
-);
+function Dialog( {children} ){
+    return(
+        <div className="panel panel-default">
+            {children}
+        </div>
+    )
+}
 
-const LikeButton = ( {count} ) => (
-    <span className="like-button">
-        <i className="fa fa-heart" />
-            { count > 0 && <span className="like-count"> {count} </span> }
-    </span>
+Dialog.propTypes = {
+    children: function (props, propName, componentName) {
+        return verified(props, propName, componentName, [Title, Body, Footer]);
+    }
+}
 
-);
+const Title = ( {children} ) =>{
+    return(
+        <div className="panel-heading">
+            <h3 className="panel-title">{children}</h3>
+        </div>
+    )
+}
 
-const MoreOptionsButton = () => (
-    <i className="fa fa-ellipsis more-options-button"></i>
-);
+const Body = ( {children} ) =>{
+    return(
+        <div className="panel-body">
+            {children}
+        </div>
+    )
+}
 
-var testTweet = {
-    message : "Something about cats",
-    gravatar : "xyz",
-    author : {
-        handle : "catperson",
-        name : "IAMA Cat Person"
-    },
-    likes : 2,
-    retweets : 5,
-    timestamp : "2016-07-30 21:24:37"
-};
+const Footer = ( {children} ) =>{
+    return(
+        <div className="panel-footer">
+            {children}
+        </div>
+    )
+}
 
-ReactDOM.render(<Tweet tweet={testTweet}/>, document.querySelector('#root'));
+function Appi(){
+
+    return(
+
+        <ErrorBox>
+            Something is wrong
+        </ErrorBox>
+
+    );
+}
+
+function Appidos(){
+    return(
+
+        <Nav>
+            <NavItem url='/'>Home</NavItem>
+
+            <NavItem url='/about'>About</NavItem>
+
+            <NavItem url='/contact'>Contact</NavItem>
+        </Nav>
+
+    )
+}
+
+function Appitres(){
+    return(
+        <Dialog>
+            <Title>Hola tarola</Title>
+            <Body>How are you today kiddos?</Body>
+            <Footer>Whatever</Footer>
+        </Dialog>
+    )
+}
+
+ReactDOM.render(<Appi />, document.querySelector('#root'));
+ReactDOM.render(<Appidos />, document.querySelector('#subroot'));
+ReactDOM.render(<Appitres />, document.querySelector('#subsubroot'));
