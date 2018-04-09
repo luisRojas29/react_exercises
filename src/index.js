@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import PropTypes from 'prop-types';
+
+import FileIcon from './file-icon';
+import FileName from './file-name';
+import CommitMessage from './commit-message';
 import Time from './time';
 
 const FileList = ( {files} ) => {
@@ -32,39 +36,6 @@ const FileListItem = ( {file} ) => (
 
 FileListItem.propTypes = {
     file: PropTypes.object.isRequired
-}
-
-function FileIcon( {file} ){
-    let icon = 'fa-file-text-o';
-    if( file.type === 'folder' ){
-        icon = 'fa-folder'
-    }
-
-    return(
-        <div className="file-icon">
-            <i className={`fa ${icon}`}></i>
-        </div>
-    )
-}
-
-FileIcon.propTypes = {
-    file:PropTypes.object.isRequired
-}
-
-const FileName = ( {file} ) =>(
-    <div className="file-name">
-        {file.name}
-    </div>
-)
-
-const CommitMessage = ({commit}) =>(
-    <div className="commit-message">
-        {commit.message}
-    </div>
-)
-
-CommitMessage.propTypes = {
-    commit: PropTypes.object.isRequired
 }
 
 const testFiles = [
