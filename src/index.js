@@ -3,20 +3,24 @@ import ReactDOM from 'react-dom';
 import moment from 'moment';
 import './index.css';
 
-function Tweet( {tweet} ){
+function Tweet( {tweets} ){
     return(
-        <div className="tweet">
-            <Avatar hash={tweet.gravatar}/>
-            <div className="content">
-                <NameWithHandle author={tweet.author}/><Time time={tweet.timestamp}/>
-                <Message text={tweet.message}/>
-                <div className="buttons">
-                    <ReplyButton />
-                    <RetweetButton count={tweet.retweets}/>
-                    <LikeButton count={tweet.likes}/>
-                    <MoreOptionsButton/>
+        <div className="tweet-wrapper">
+            {tweets.map(tweet =>(
+                <div className="tweet" key={tweet.id}>
+                    <Avatar hash={tweet.gravatar}/>
+                    <div className="content">
+                        <NameWithHandle author={tweet.author}/><Time time={tweet.timestamp}/>
+                        <Message text={tweet.message}/>
+                        <div className="buttons">
+                            <ReplyButton />
+                            <RetweetButton count={tweet.retweets}/>
+                            <LikeButton count={tweet.likes}/>
+                            <MoreOptionsButton/>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            ))}
         </div>
     );
 }
@@ -94,16 +98,67 @@ const MoreOptionsButton = () => (
     <i className="fa fa-ellipsis more-options-button"></i>
 );
 
-var testTweet = {
-    message : "Something about cats",
-    gravatar : "xyz",
-    author : {
-        handle : "catperson",
-        name : "IAMA Cat Person"
+var testTweet = [
+    {
+        id: 234,
+        message : "Something about cats",
+        gravatar : "xyz",
+        author : {
+            handle : "catperson",
+            name : "IAMA Cat Person"
+        },
+        likes : 2,
+        retweets : 5,
+        timestamp : "2016-07-30 21:24:37"
     },
-    likes : 2,
-    retweets : 5,
-    timestamp : "2016-07-30 21:24:37"
-};
+    {
+        id: 485,
+        message : "Something about dogs",
+        gravatar : "abc",
+        author : {
+            handle : "dogperson",
+            name : "IAMA Dog Person"
+        },
+        likes : 15,
+        retweets : 3,
+        timestamp : "2016-08-11 08:20:14"
+    },
+    {
+        id: 999,
+        message : "Something about mice",
+        gravatar : "onetwothree",
+        author : {
+            handle : "mouseperson",
+            name : "IAMA Mouse Person"
+        },
+        likes : 0,
+        retweets : 2,
+        timestamp : "2016-08-12 20:16:44"
+    },
+    {
+        id: 42,
+        message : "Something about birds",
+        gravatar : "eagle",
+        author : {
+            handle : "birdperson",
+            name : "IAMA Bird Person"
+        },
+        likes : 10,
+        retweets : 1,
+        timestamp : "2016-09-01 05:18:47"
+    },
+    {
+        id: 3564,
+        message : "Something about cats",
+        gravatar : "xyz",
+        author : {
+            handle : "catperson",
+            name : "IAMA Cat Person"
+        },
+        likes : 2,
+        retweets : 5,
+        timestamp : "2016-07-30 21:24:37"
+    }
+];
 
-ReactDOM.render(<Tweet tweet={testTweet}/>, document.querySelector('#root'));
+ReactDOM.render(<Tweet tweets={testTweet}/>, document.querySelector('#root'));
