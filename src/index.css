@@ -1,0 +1,45 @@
+html{
+    background: #00ddff;
+}
+
+.trello{
+    display: flex;
+}
+
+.card-holder{
+    align-self: baseline;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    background: #ccc;
+    display: inline-block;
+    margin: 0 14px;
+    padding: 10px;
+    width: 250px;
+}
+
+.card-header, .card-footer{
+    font-family: Verdana;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.card-header span{
+    cursor: pointer;
+    float: right;
+    margin-right: 10px;
+}
+
+.card{
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 5px;
+    box-shadow: #aaaaaa 0 1px 1px;
+    font-family: Calibri;
+    font-weight: normal;
+    padding: 5px;
+    margin: 10px auto;
+}
+
+.card-footer span{
+    cursor: pointer;
+}
