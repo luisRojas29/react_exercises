@@ -1,7 +1,25 @@
+html{
+    background: gray;
+}
+
 .pin{
-    background: aliceblue;
+    background: white;
     border-radius: 10px;
-    width: 250px;
+    font-family: Verdana, Geneva, sans-serif;
+    padding: 3px;
+    width: 230px;
+}
+
+.title{
+    font-size: 13px;
+    font-weight: bold;
+    margin: 10px 0 5px 8px;
+}
+
+.author{
+    color: gray;
+    margin: 5px 0 5px 8px;
+    font-size: 12px;
 }
 
 .mosaic{
@@ -21,7 +39,36 @@
     width: 32%;
 }
 
+.main-img{
+    position: relative;
+}
+
+.main-img img{
+    height: 125px;
+}
+
+.num-pins{
+    background: rgba(0,0,0, .4);
+    border-radius: 2px;
+    bottom: 8px;
+    color: white;
+    font-size: 12px;
+    height: 14px;
+    padding: 3px;
+    position: absolute;
+    left: 5px;
+}
+
 img{
     border-radius: 3px;
     width: 100%;
+}
+
+.follow-btn{
+    border-radius: 3px;
+    color: #C10021;
+    display: block;
+    height: 32px;
+    margin: 3px auto;
+    width: 95%;
 }
